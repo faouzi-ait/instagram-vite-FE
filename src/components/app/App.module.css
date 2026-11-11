@@ -1,0 +1,155 @@
+.healthPage {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 32px 20px;
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(170, 59, 255, 0.1),
+      transparent 38%
+    ),
+    var(--bg);
+}
+
+.healthCard {
+  width: min(100%, 720px);
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.healthCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.healthCard h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 6vw, 44px);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.endpoint {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.refreshButton {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.refreshButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.refreshButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.requestMessage,
+.requestError {
+  margin: 0;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.requestMessage {
+  background: var(--social-bg);
+  color: var(--text);
+}
+
+.requestError {
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: rgba(220, 38, 38, 0.06);
+  color: #b42318;
+}
+
+.requestError p {
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+
+.requestHint {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.responsePanel {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.responsePanelHeading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 18px;
+}
+
+.responsePanelHeading h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.statusDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22a06b;
+  box-shadow: 0 0 0 4px rgba(34, 160, 107, 0.12);
+}
+
+.responsePanel pre {
+  max-height: 420px;
+  overflow: auto;
+  margin: 0;
+  padding: 20px;
+  background: var(--social-bg);
+  color: var(--text-h);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  .healthCardHeader {
+    flex-direction: column;
+  }
+}
