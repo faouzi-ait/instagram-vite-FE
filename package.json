@@ -16,9 +16,12 @@
     "format:staged": "lint-staged",
     "format:check": "prettier --check .",
     "lint": "eslint .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "generate:api:schema": "npm exec --yes --package=typescript@5 --package=openapi-typescript@7.13.0 -- openapi-typescript https://instagram-python-5uws.onrender.com/openapi.json -o src/types/generated/api.d.ts",
+    "generate:api": "npm run generate:api:schema && node ./generate-api-aliases.mjs"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.108.1",
     "axios": "^1.21.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

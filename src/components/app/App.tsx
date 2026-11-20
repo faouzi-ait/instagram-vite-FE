@@ -1,47 +1,18 @@
-import { useEffect, useState } from 'react'
-import { apiGet } from '../../api/apiCalls'
+/* eslint-disable no-console */
+import { useApiGet } from '../../hooks/useApiGet'
+import { healthReqObject, postsReqObject } from '../../api/reqObj'
+import type { PostResponse } from '../../types/api'
 import styles from './App.module.css'
 
 const App = () => {
-  const [health, setHealth] = useState<unknown>(null)
-  const [error, setError] = useState<string | null>(null)
+  const healthStatus = useApiGet<{ status: string }>(healthReqObject)
+  const { data, isPending, error } = useApiGet<PostResponse[]>(postsReqObject)
 
-  useEffect(() => {
-    const controller = new AbortController()
+  console.log(data)
+  console.log(JSON.stringify(healthStatus.data, null, 2))
 
-    const fetchHealth = async () => {
-      setError(null)
-
-      try {
-        const result = await apiGet<unknown>('/health', {
-          signal: controller.signal,
-        })
-        setHealth(result)
-      } catch (requestError) {
-        if (controller.signal.aborted) {
-          return
-        }
-
-        setError(
-          requestError instanceof Error
-            ? requestError.message
-            : 'An unexpected error occurred while checking the API.',
-        )
-      }
-    }
-
-    fetchHealth()
-
-    return () => controller.abort()
-  }, [])
-
-  if (error) {
-    return (
-      <div className={styles.requestError} role="alert">
-        <strong>Could not reach the API</strong>
-      </div>
-    )
-  }
+  if (isPending) return <p>Retrieving Posts from API...</p>
+  if (error) return <strong>Could not reach the API</strong>
 
   return (
     <main className={styles.healthPage}>
@@ -50,11 +21,6 @@ const App = () => {
           <span className={styles.statusDot} aria-hidden="true" />
           <h2>Response</h2>
         </div>
-        <pre>
-          {typeof health === 'string'
-            ? health
-            : JSON.stringify(health, null, 2)}
-        </pre>
       </section>
     </main>
   )
