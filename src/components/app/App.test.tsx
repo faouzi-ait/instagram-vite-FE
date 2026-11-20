@@ -1,4 +1,5 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { apiGet } from '../../api/apiCalls'
 import App from './App'
@@ -7,7 +8,21 @@ vi.mock('../../api/apiCalls', () => ({
   apiGet: vi.fn(),
 }))
 
-describe('App health check', () => {
+const renderApp = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false, gcTime: 0 },
+    },
+  })
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>,
+  )
+}
+
+describe('App health and posts queries', () => {
   beforeEach(() => {
     vi.mocked(apiGet).mockReset()
   })
@@ -16,42 +31,45 @@ describe('App health check', () => {
     cleanup()
   })
 
-  it('requests the health endpoint and displays a JSON response', async () => {
-    vi.mocked(apiGet).mockResolvedValue({ status: 'ok' })
-
-    render(<App />)
-
-    await waitFor(() => {
-      expect(document.querySelector('pre')?.textContent).toContain(
-        '"status": "ok"',
-      )
+  it('requests the health and posts endpoints', async () => {
+    vi.mocked(apiGet).mockImplementation(async (url: string) => {
+      if (url === '/health') return { status: 'ok' }
+      if (url === '/posts') return []
+      throw new Error(`Unexpected URL: ${url}`)
     })
 
-    expect(apiGet).toHaveBeenCalledOnce()
-    expect(apiGet).toHaveBeenCalledWith(
-      '/health',
-      expect.objectContaining({ signal: expect.anything() }),
-    )
+    renderApp()
+
+    expect(await screen.findByText('Response')).toBeTruthy()
+
+    await waitFor(() => {
+      expect(apiGet).toHaveBeenCalledWith(
+        '/health',
+        expect.objectContaining({ signal: expect.anything() }),
+      )
+      expect(apiGet).toHaveBeenCalledWith(
+        '/posts',
+        expect.objectContaining({ signal: expect.anything() }),
+      )
+    })
   })
 
-  it('displays a plain-text response when the API does not return JSON', async () => {
-    vi.mocked(apiGet).mockResolvedValue('healthy')
+  it('displays the loading state while posts are being retrieved', () => {
+    vi.mocked(apiGet).mockImplementation(() => new Promise(() => undefined))
 
-    render(<App />)
+    renderApp()
 
-    expect(await screen.findByText('healthy')).toBeTruthy()
+    expect(screen.getByText('Retrieving Posts from API...')).toBeTruthy()
   })
 
-  it('displays an error when the API responds unsuccessfully', async () => {
-    vi.mocked(apiGet).mockRejectedValue(
-      new Error('GET /health failed: Service unavailable'),
-    )
+  it('displays an error when the posts request fails', async () => {
+    vi.mocked(apiGet).mockImplementation(async (url: string) => {
+      if (url === '/health') return { status: 'ok' }
+      throw new Error('GET /posts failed: Service unavailable')
+    })
 
-    render(<App />)
+    renderApp()
 
-    const alert = await screen.findByRole('alert')
-    expect(alert.textContent).toContain(
-      'GET /health failed: Service unavailable',
-    )
+    expect(await screen.findByText('Could not reach the API')).toBeTruthy()
   })
 })
