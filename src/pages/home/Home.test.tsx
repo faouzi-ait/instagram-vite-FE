@@ -1,8 +1,10 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { MemoryRouter } from 'react-router-dom'
+import App from '../../App'
 import { apiGet } from '../../api/apiCalls'
-import App from './App'
+import { ThemeProvider } from '../../context/ThemeProvider'
 
 vi.mock('../../api/apiCalls', () => ({
   apiGet: vi.fn(),
@@ -17,7 +19,11 @@ const renderApp = () => {
 
   return render(
     <QueryClientProvider client={queryClient}>
-      <App />
+      <ThemeProvider>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </ThemeProvider>
     </QueryClientProvider>,
   )
 }

@@ -1,0 +1,60 @@
+.healthPage {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 32px 20px;
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(170, 59, 255, 0.1),
+      transparent 38%
+    ),
+    var(--bg);
+}
+
+.healthCard {
+  width: min(100%, 720px);
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.healthCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.healthCard h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 6vw, 44px);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.responsePanelHeading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 18px;
+}
+
+.responsePanelHeading h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.statusDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22a06b;
+  box-shadow: 0 0 0 4px rgba(34, 160, 107, 0.12);
+}

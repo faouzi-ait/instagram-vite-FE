@@ -9,6 +9,8 @@ type UseApiGetOptions = {
   config?: AxiosRequestConfig
   enabled?: boolean
   staleTime?: number
+  refetchOnMount?: boolean | 'always'
+  refetchInterval?: number | false
 }
 
 export function useApiGet<TResponse>({
@@ -16,7 +18,9 @@ export function useApiGet<TResponse>({
   url,
   config,
   enabled = true,
-  staleTime = 60_000,
+  staleTime = 0,
+  refetchOnMount = 'always',
+  refetchInterval = 30_000,
 }: UseApiGetOptions) {
   return useQuery<TResponse, Error>({
     queryKey,
@@ -24,5 +28,8 @@ export function useApiGet<TResponse>({
     enabled,
     retry: false,
     staleTime,
+    refetchOnMount,
+    refetchOnWindowFocus: true,
+    refetchInterval,
   })
 }
