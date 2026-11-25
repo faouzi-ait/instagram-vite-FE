@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import App from './App.tsx'
 
-import { ErrorBoundary } from './components/error-boundary/ErrorBoundary.tsx'
+import { ErrorBoundary } from './pages/error-boundary/ErrorBoundary.tsx'
 import { ThemeProvider } from './context/ThemeProvider.tsx'
 
 import './index.css'

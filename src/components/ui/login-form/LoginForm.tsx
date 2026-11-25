@@ -1,30 +1,10 @@
 /* eslint-disable no-console */
-import axios from 'axios'
 import { useId, useState, type SubmitEvent } from 'react'
-
-import { useLogin } from '../../hooks/useAuth'
+import { useLogin } from '../../../hooks/useAuth'
+import { getApiErrorMessage } from '../../../utils/getApiErrorMessage'
 
 type LoginFormProps = {
   onClose: () => void
-}
-
-const getLoginErrorMessage = (error: unknown): string => {
-  if (axios.isAxiosError(error)) {
-    switch (error.response?.status) {
-      case 401:
-        return 'Incorrect email or password.'
-      case 422:
-        return 'Check your email and password.'
-      case 429:
-        return 'Too many login attempts. Please try again later.'
-    }
-
-    if (!error.response) {
-      return 'Could not reach the server. Check your connection.'
-    }
-  }
-
-  return 'Could not complete login. Please try again.'
 }
 
 export const LoginForm = ({ onClose }: LoginFormProps) => {
@@ -33,15 +13,12 @@ export const LoginForm = ({ onClose }: LoginFormProps) => {
   const [password, setPassword] = useState('')
 
   const loginMutation = useLogin()
-
   const errorId = `${id}-error`
-  const canSubmit =
-    email.trim().length > 0 && password.length > 0 && !loginMutation.isPending
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (!canSubmit) return
+    if (loginMutation.isPending) return
 
     loginMutation.mutate(
       {
@@ -105,11 +82,11 @@ export const LoginForm = ({ onClose }: LoginFormProps) => {
 
       {loginMutation.isError && (
         <p id={errorId} role="alert">
-          {getLoginErrorMessage(loginMutation.error)}
+          {getApiErrorMessage(loginMutation.error)}
         </p>
       )}
 
-      <button type="submit" disabled={!canSubmit}>
+      <button type="submit" disabled={loginMutation.isPending}>
         {loginMutation.isPending ? 'Logging in…' : 'Log in'}
       </button>
 

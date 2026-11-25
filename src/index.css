@@ -2,6 +2,7 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
+  --border-bottom: #3e3c40;
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
   font-family: Calibri, Courier, monospace;
@@ -20,26 +21,24 @@
   --text: #9ca3af;
   --text-h: #f3f4f6;
   --bg: #16171d;
-  margin: 0;
-  padding: 0;
+  --border-bottom: #d4d4d4;
   --shadow:
     rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
 }
 
 :root[data-theme='light'] {
   color-scheme: light;
-  margin: 0;
-  padding: 0;
+  --border-bottom: #3e3c40;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  width: 1126px;
-  max-width: 100%;
   min-height: 100svh;
-  margin: 0 auto;
-  text-align: center;
-  box-sizing: border-box;
-  border-inline: 1px solid var(--border);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }

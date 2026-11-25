@@ -1,0 +1,29 @@
+.healthCard {
+  width: 400px;
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.responsePanelHeading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+}
+
+.responsePanelHeading h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.statusDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22a06b;
+  box-shadow: 0 0 0 4px rgba(34, 160, 107, 0.12);
+}

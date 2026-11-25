@@ -1,0 +1,5 @@
+.mainListing {
+  flex-grow: 3;
+  height: 60vh;
+  background: var(--border-bottom);
+}

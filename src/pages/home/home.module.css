@@ -1,43 +1,11 @@
-.healthPage {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  min-height: 100svh;
-  background:
-    radial-gradient(
-      ellipse at 15% 15%,
-      rgba(170, 59, 255, 0.1),
-      transparent 38%
-    ),
-    var(--bg);
-}
-
-.healthCard {
-  width: 400px;
-  padding: 24px;
-  border-radius: 20px;
-  background: var(--bg);
-  box-shadow: var(--shadow);
-  text-align: left;
-}
-
-.responsePanelHeading {
+.homePage {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 18px;
+  flex: 1;
+  align-items: stretch;
+  min-height: 0;
+  background: var(--bg);
 }
 
-.responsePanelHeading h2 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 650;
-}
-
-.statusDot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #22a06b;
-  box-shadow: 0 0 0 4px rgba(34, 160, 107, 0.12);
+.homePage > * {
+  border: 1px solid var(--border-bottom);
 }
