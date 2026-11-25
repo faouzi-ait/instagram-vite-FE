@@ -1,15 +1,16 @@
 // import Theme from '../../components/ui/theme/Theme'
 // import { LoginForm } from '../../components/ui/login-form/LoginForm'
-import MainListing from '../../components/layout/main-listing/MainListing'
-import Sidebar from '../../components/layout/sidebar/Sidebar'
+import MainFeed from '../../components/layout/MainFeed/MainFeed'
+import LeftSidebar from '../../components/layout/LeftSidebar/LeftSidebar'
+import RightSidebar from '../../components/layout/RightSidebar/RightSidebar'
 import styles from './home.module.css'
 
 const Home = () => {
   return (
     <main className={styles.homePage}>
-      <Sidebar />
-      <MainListing />
-      <Sidebar />
+      <LeftSidebar />
+      <MainFeed />
+      <RightSidebar />
       {/* <Theme /> */}
       {/* <LoginForm onClose={() => console.log('Login form closed')} /> */}
     </main>

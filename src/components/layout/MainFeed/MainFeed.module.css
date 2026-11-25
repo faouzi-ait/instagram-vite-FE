@@ -1,0 +1,8 @@
+.mainListing {
+  flex: 3 1 0;
+  min-width: 0;
+  height: var(--height);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 0;
+}

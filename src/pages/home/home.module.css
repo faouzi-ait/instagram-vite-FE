@@ -5,7 +5,3 @@
   min-height: 0;
   background: var(--bg);
 }
-
-.homePage > * {
-  border: 1px solid var(--border-bottom);
-}

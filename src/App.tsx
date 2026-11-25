@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
-import Header from './components/layout/header/Header'
+import AppHeader from './components/layout/AppHeader/AppHeader'
 import Profile from './pages/user-profile'
-import { ProtectedRoute } from './pages/protected-route/ProtectedRoute'
+import { ProtectedRoute } from './components/routing/ProtectedRoute'
 
 const App = () => {
   return (
     <>
-      <Header title="Instagram" />
+      <AppHeader title="Instagram" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route element={<ProtectedRoute />}>

@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     document.documentElement.setAttribute(
       'data-theme',
-      theme ? 'dark' : 'light',
+      theme ? 'light' : 'dark',
     )
   }, [theme])
 
