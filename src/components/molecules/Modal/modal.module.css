@@ -1,0 +1,45 @@
+/* MODAL STYLES */
+.modal {
+  width: min(90vw, 32rem);
+  margin: auto;
+  padding: 0.75rem;
+  max-height: 90vh;
+
+  color: var(--text);
+  border: 0;
+  border-radius: 0.2rem;
+  box-shadow: 5px 6px 15px 7px rgba(0, 0, 0, 0.35);
+  background: var(--bg);
+  overflow-y: auto;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.headerLayout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.headerLayout h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.closeButton {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}

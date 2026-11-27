@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useCurrentUser } from '../../hooks/useAuth'
+import { useCurrentUser } from '../../../hooks/useAuth'
 
 export const ProtectedRoute = () => {
   const { data: user, isPending, isError, refetch } = useCurrentUser()

@@ -5,6 +5,7 @@ import { MemoryRouter } from 'react-router-dom'
 import App from '../../App'
 import { apiGet } from '../../api/apiCalls'
 import { ThemeProvider } from '../../context/ThemeProvider'
+import { ModalProvider } from '../../context/ModalProvider'
 
 vi.mock('../../api/apiCalls', () => ({
   apiGet: vi.fn(),
@@ -20,9 +21,11 @@ const renderApp = () => {
   return render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
+        <ModalProvider>
+          <MemoryRouter>
+            <App />
+          </MemoryRouter>
+        </ModalProvider>
       </ThemeProvider>
     </QueryClientProvider>,
   )

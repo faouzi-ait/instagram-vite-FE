@@ -1,0 +1,33 @@
+.mainListing {
+  flex: 3 1 0;
+  min-width: 0;
+  height: var(--height);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 0;
+}
+
+/* MODAL STYLES */
+.modalOverlay {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  position: fixed;
+
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  inset: 0;
+}
+
+.modal {
+  width: min(90vw, 32rem);
+  padding: 1.5rem;
+  max-height: 90vh;
+
+  color: var(--text);
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: 5px 6px 15px 7px rgba(0, 0, 0, 0.35);
+  background: var(--bg);
+  overflow-y: auto;
+}
