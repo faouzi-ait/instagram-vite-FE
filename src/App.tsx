@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
-import AppHeader from './components/organisms/AppHeader/AppHeader'
 import Profile from './pages/user-profile'
-import { ProtectedRoute } from './components/infrastructure/routing/ProtectedRoute'
+import Follower from './pages/follower'
+import AppHeader from './components/organisms/AppHeader/AppHeader'
 import { ModalHost } from './components/infrastructure/modal/ModalHost'
+import { ProtectedRoute } from './components/infrastructure/routing/ProtectedRoute'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/follower" element={<Follower />} />
         </Route>
       </Routes>
       <ModalHost />

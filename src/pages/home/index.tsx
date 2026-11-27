@@ -1,5 +1,4 @@
-// import Theme from '../../components/ui/theme/Theme'
-// import { LoginForm } from '../../components/ui/login-form/LoginForm'
+// import { LoginForm } from '../../components/molecules/LoginForm/LoginForm'
 import MainFeed from '../../components/organisms/MainFeed/MainFeed'
 import LeftSidebar from '../../components/organisms/LeftSidebar/LeftSidebar'
 import RightSidebar from '../../components/organisms/RightSidebar/RightSidebar'
@@ -11,7 +10,6 @@ const Home = () => {
       <LeftSidebar />
       <MainFeed />
       <RightSidebar />
-      {/* <Theme /> */}
       {/* <LoginForm onClose={() => console.log('Login form closed')} /> */}
     </main>
   )

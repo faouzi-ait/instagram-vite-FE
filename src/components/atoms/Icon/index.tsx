@@ -9,10 +9,14 @@ import CommentEmpty from './svgs/comment-empty'
 import HeartEmpty from './svgs/heart-empty'
 import HeartFull from './svgs/heart-full'
 import Sun from './svgs/sun'
+import Moon from './svgs/moon'
 import Trash from './svgs/trash'
 import Add from './svgs/add'
 import Photo from './svgs/photo'
 import Remove from './svgs/remove'
+import Home from './svgs/home'
+import Profile from './svgs/profile'
+import Create from './svgs/create'
 
 export type IconKey = keyof typeof iconMap
 
@@ -33,10 +37,14 @@ const iconComponents = {
   'heart-empty': HeartEmpty,
   'heart-full': HeartFull,
   sun: Sun,
+  moon: Moon,
   trash: Trash,
   add: Add,
   photo: Photo,
   remove: Remove,
+  home: Home,
+  profile: Profile,
+  create: Create,
 }
 
 export default function Icon({

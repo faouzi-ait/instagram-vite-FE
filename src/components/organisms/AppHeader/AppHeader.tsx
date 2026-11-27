@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+import LoginLink from '../../atoms/buttons/LoginLink'
 import styles from './AppHeader.module.css'
 
 type AppHeaderProps = {
@@ -5,7 +7,13 @@ type AppHeaderProps = {
 }
 
 const AppHeader = ({ title }: AppHeaderProps) => {
-  return <header className={styles.header}>{title}</header>
+  const navigate = useNavigate()
+  return (
+    <header className={styles.header}>
+      <div onClick={() => navigate('/')}>{title}</div>
+      <LoginLink />
+    </header>
+  )
 }
 
 export default AppHeader

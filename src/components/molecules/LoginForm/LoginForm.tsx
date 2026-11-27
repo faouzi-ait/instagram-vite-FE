@@ -40,45 +40,39 @@ export const LoginForm = ({ onClose }: LoginFormProps) => {
       aria-busy={loginMutation.isPending}
       aria-describedby={loginMutation.isError ? errorId : undefined}
     >
-      <h2>Log in</h2>
+      <div>
+        <label htmlFor={`${id}-email`}>Email</label>
+        <input
+          id={`${id}-email`}
+          name="email"
+          type="email"
+          autoComplete="username"
+          autoCapitalize="none"
+          spellCheck={false}
+          required
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value)
+            loginMutation.reset()
+          }}
+        />
+      </div>
 
-      <fieldset disabled={loginMutation.isPending}>
-        <legend>Account details</legend>
-
-        <div>
-          <label htmlFor={`${id}-email`}>Email</label>
-          <input
-            id={`${id}-email`}
-            name="email"
-            type="email"
-            autoComplete="username"
-            autoCapitalize="none"
-            spellCheck={false}
-            required
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value)
-              loginMutation.reset()
-            }}
-          />
-        </div>
-
-        <div>
-          <label htmlFor={`${id}-password`}>Password</label>
-          <input
-            id={`${id}-password`}
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value)
-              loginMutation.reset()
-            }}
-          />
-        </div>
-      </fieldset>
+      <div>
+        <label htmlFor={`${id}-password`}>Password</label>
+        <input
+          id={`${id}-password`}
+          name="password"
+          type="password"
+          autoComplete="current-password"
+          required
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value)
+            loginMutation.reset()
+          }}
+        />
+      </div>
 
       {loginMutation.isError && (
         <p id={errorId} role="alert">

@@ -1,24 +1,25 @@
 :root {
   /* Layout */
   --full-height: 100vh;
-  --header-height: 15vh;
+  --header-height: 12vh;
   --height: calc(var(--full-height) - var(--header-height));
 
   /* Light theme */
   --text: #6b6375;
   --bg: #fff;
-  --border: #3e3c40;
+  --border: #646464;
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  font-family: Calibri, Courier, monospace;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.85rem;
   color-scheme: light;
   color: var(--text);
   background: var(--bg);
 }
 
 :root[data-theme='dark'] {
-  --text: #9ca3af;
+  --text: #f7f8f8;
   --bg: #16171d;
   --border: #d4d4d4;
   --shadow:
@@ -28,9 +29,9 @@
 }
 
 :root[data-theme='light'] {
-  --text: #6b6375;
+  --text: #0a0a0a;
   --bg: #fff;
-  --border: #3e3c40;
+  --border: #b3b3b3;
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 

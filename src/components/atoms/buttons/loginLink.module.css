@@ -1,0 +1,14 @@
+.login {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login button {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.25rem;
+  color: rgb(74, 74, 218);
+  border: none;
+  background: none;
+  cursor: pointer;
+}

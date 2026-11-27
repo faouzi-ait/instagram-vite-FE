@@ -2,5 +2,4 @@
   flex: 1 1 0;
   min-width: 0;
   height: var(--height);
-  border-bottom: 1px solid var(--border);
 }

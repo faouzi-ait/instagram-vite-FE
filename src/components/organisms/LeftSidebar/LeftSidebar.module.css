@@ -1,6 +1,33 @@
 .sidebar {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 0;
   min-width: 0;
   height: var(--height);
+}
+
+.sidebar span {
+  text-transform: capitalize;
+  padding-right: 1rem;
+  font-size: 1.1rem;
+}
+
+.sidebar nav {
   border-bottom: 1px solid var(--border);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.menuItem:hover {
+  transition: all 0.75s linear;
+  background: rgb(239, 239, 239);
+  cursor: pointer;
+}
+
+.sidebar > :last-child {
+  margin: auto 0 6rem 2rem;
 }
